@@ -1,0 +1,44 @@
+<div class="container-fluid clazzrum-leftPadding" ng-controller="viewProfileController" ng-init="getUserProfile()">
+	<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+	
+			<!--div class="panel-body">
+
+				<div class="col-md-4" style="padding-top:2%">
+					<img ng-if="userProfile.profileImage == null || userProfile.profileImage.length == 0" class="img-thumbnail" ng-src="{{userProfile.gender == 'Male' && 'images/male_profile.png' || 'images/female_profile.png'}}" width="304" height="236"/>
+					<img ng-if="userProfile.profileImage != null && userProfile.profileImage.length > 0" class="img-thumbnail" data-ng-src="data:image/PNG;base64,{{userProfile.profileImage}}" width="304" height="236"/>
+					
+				</div>
+				<div class="col-md-8">
+
+					<h3> <span >{{userProfile.name}}</span></h3><hr/>
+
+					<p><strong ><i class="fa fa-group"></i> <a href="#members">{{userProfile.clazzName}}</a></strong> {{userProfile.clazzRole}}</p>
+					<p>
+						<i class="fa fa-user"></i> <span >{{userProfile.gender}}</span>
+					</p>
+					<p > <i class="fa fa-envelope"> </i> <a href="mailto:{{userProfile.emailId}}">{{userProfile.emailId}}</a> </p>
+					<p><i class="glyphicon glyphicon-gift"></i> {{userProfile.dob | date}}</p>
+				</div>
+			</div>
+		</div-->
+	 <div class="panel panel-default">
+            <div class="panel-heading"><b>{{userProfile.name}}</b></div>
+            
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                    <img ng-if="userProfile.profileImage == null || userProfile.profileImage.length == 0" class="img-thumbnail" ng-src="{{userProfile.gender == 'Male' && 'images/male_profile.png' || 'images/female_profile.png'}}" width="304" height="236"/>
+					<img ng-if="userProfile.profileImage != null && userProfile.profileImage.length > 0" class="img-thumbnail" data-ng-src="data:image/PNG;base64,{{userProfile.profileImage}}" width="304" height="236"/>
+                </div>
+                <div class=" col-md-4 col-lg-4 "> 
+                  <table class="table table-user-information"><tbody>
+                  <tr><td><a href="mailto:{{userProfile.emailId}}">{{userProfile.emailId}}</a></td></tr><tr><td><a href="#members">{{userProfile.clazzName}}</a> {{userProfile.clazzRole}}</td></tr>
+                  <tr><td>{{userProfile.gender}}</td></tr><tr><td></td></tr>
+
+                  </tbody></table>
+                </div>
+              </div>
+            </div>
+          </div>
+	</div>
+</div>

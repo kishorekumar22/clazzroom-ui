@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<div class="container-fluid clazzrum-leftPadding" ng-controller="assignmentsController">
+  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" ng-init="getAssignments()">
+    <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="assignment in clazz.assignments">
+                <div class="box">
+                    <div class="box-content">
+                        <a class="pull-right "  style="color:#d9534f" ng-click="deleteAssignment(assignment)"><i class="fa fa-times"></i></a>
+                        <h4 class="tag-title" style="margin:0">{{assignment.name}}</h4>
+                        <p class="text-muted"><i class="fa fa-calendar"></i>  {{assignment.dateOfSubmission | date}} </p>
+                        <hr />
+                        <p>{{assignment.description}} </p>
+                        <i class="fa fa-edit" tooltip="created by {{assignment.author}}"></i><a href="#/viewProfile{{assignment.authorEmailId}}"><strong> {{assignment.author}} </strong>({{assignment.authorEmailId}})</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="box" style="background:#efefef">
+                    <div class="box-content">
+                        <h4>Create new</h4>
+                        <input type="text"  tabindex="1" class="form-control" placeholder="Name" value="" ng-model="newAssignment.name"/>
+                        <textarea tabindex="2" class="form-control" placeholder="Description" value="" row="4"/ ng-model="newAssignment.description"></textarea>
+                        <input type="date" ng-placeholder="Date of Submission" class="form-control" ng-model="newAssignment.dateOfSubmission" min="{{currentDate | date:'yyyy-MM-dd'}}">
+                        <button class="btn btn-info" style="width:100%" ng-click="createAssignment()" ng-show="newAssignment.name.length>0 && newAssignment.description.length > 0 && newAssignment.dateOfSubmission.toISOString().length > 0">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>           
+    </div>
+</div>
+</div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<div class="container-fluid clazzrum-leftPadding" ng-controller="discussionsController" ng-init="getDiscussions()">
+   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">  
+    <div class="panel panel-default well">
+        <div class="panel-body" style="padding:0">
+            <div class="media">
+
+                <div class="media-body">
+                    <textarea class="form-control" rows="2" placeholder="Start a discussion..(press 'Enter' to post)" ng-keyup="$event.keyCode == 13 && postDiscussion()" ng-model="discussionText"></textarea>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="panel panel-default" ng-repeat="post in discussions">
+
+        <div class="panel-heading" >
+            <a class="pull-right " ng-show="post.authorEmailId == user.emailId" style="color:#d9534f" ng-click="deletePost(post)"><i class="fa fa-times"></i></a>
+            <i class="fa fa-comments fa-fw"></i> {{post.content}} <br><em> started by <a href="#/viewProfile{{post.authorEmailId}}">{{post.author}}</a></em>
+            <!--div class="btn-group pull-right">
+                <button type="button" class="btn btn-default btn-xs">
+                    <i class="fa fa-thumbs-up"><i>12</i></i>
+                </button>
+                <button type="button" class="btn btn-default btn-xs">
+                    <i class="fa fa-thumbs-down"><i>4</i></i>
+                </button>
+            </div-->
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <ul class="chat">
+                
+                <li class="right clearfix" ng-repeat="c in post.comments">
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                          <a href="#/viewProfile{{c.authorEmailId}}"><strong class="primary-font" >{{c.author}}</strong></a>
+                           <a class="pull-right " ng-show="c.authorEmailId == user.emailId" style="color:#d9534f" ng-click="deletePostComment(post.id,c)"><i class="fa fa-times"></i></a>
+                        </div>
+                        <p>
+                            {{c.content}}
+                            <small class="pull-right text-muted">
+                            <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                        </p>
+                    </div>
+                </li>
+
+                </ul>
+            </div>
+            <!-- /.panel-body -->
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input id="btn-input"  type="text" class="form-control input-sm" placeholder="Type your comments" ng-model="commentArray[$index]"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-sm" id="btn-chat" ng-click="addComment(post.id,commentArray[$index])">
+                            comment
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <!-- /.panel-footer -->
+        </div>
+        <!-- /.panel .chat-panel -->
+    </div>
+</div>
